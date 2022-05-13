@@ -388,21 +388,6 @@ sharder:
         goroutines: "false"
         memlog: "false"
       development:
-        state: "true"
-        dkg: "true"
-        viewChange: "false"
-        blockRewards: "false"
-        smartContract:
-          storage: "true"
-          faucet: "true"
-          zrc20: "true"
-          interest: "true"
-          fee: "false"
-          miner: "true"
-          multisig: "true"
-          vesting: "true"
-          magma: "false" #set true to enable magma
-          zcn: "true"
         txnGeneration:
           wallets: "50"
           transactions: "70"
@@ -453,6 +438,8 @@ sharder:
           storage:
             provider: "blockstore.FSBlockStore" # blockstore.FSBlockStore or blockstore.BlockDBStore
         roundRange: "10000000"
+        dkg: true
+        view_change: false
         roundTimeouts:
           softtoMin: "1500" #in miliseconds
           softtoMult: "1" #multiples of mean network time (mnt)  softto = max{softo_min, softto_mult * mnt}
@@ -470,15 +457,24 @@ sharder:
         messages:
           verificationTicketsTo: "all_miners" # generator or all_miners
         state:
+          enabled: true
           pruneBelowCount: "100" # rounds
           sync:
             timeout: "10" # seconds
+        block_rewards: true 
         stuck:
           checkInterval: "10" # seconds
           timeThreshold: "60" #seconds
         smartContract:
           settingUpdatePeriod: "200" #rounds
           timeout: "8000ms" # milliseconds
+          storage: true
+          faucet: true
+          interest: true
+          miner: true
+          multisig: true
+          vesting: true
+          zcn: true
         healthCheck:
           showCounters: "true"
           deepScan:
